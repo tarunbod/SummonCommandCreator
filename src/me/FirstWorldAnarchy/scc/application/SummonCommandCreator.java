@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  */
 public class SummonCommandCreator extends Application {
 
-    public static final String VERSION = "V2.2";
+    public static final String VERSION = "V2.4";
     
     @Override
     public void start(Stage stage) throws Exception {
@@ -22,7 +22,7 @@ public class SummonCommandCreator extends Application {
         scene.getStylesheets().add(getClass().getResource("scc.css").toExternalForm());
 
         stage.getIcons().add(new Image(getClass().getResource("/me/FirstWorldAnarchy/scc/application/img/zombieFace.jpg").toExternalForm()));
-        stage.setTitle("Summon Command Creator V2.0");
+        stage.setTitle("Summon Command Creator " + VERSION);
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

@@ -3,7 +3,7 @@
     src: url('/me/FirstWorldAnarchy/scc/application/Minecraftia.ttf');
 }
 
-.root {
+/*.root {
 -fx-base: rgb(50, 50, 50);
 -fx-background: rgb(50, 50, 50);
 -fx-control-inner-background:  rgb(50, 50, 50);
@@ -58,4 +58,4 @@
 }
 .tab:selected:hover {
     -fx-background-color: linear-gradient(to bottom, -fx-base, derive(-fx-base,50%));
-}
+}*/

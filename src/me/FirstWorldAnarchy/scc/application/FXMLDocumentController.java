@@ -59,7 +59,7 @@ public class FXMLDocumentController implements Initializable {
         "EnderDragon", "Enderman", "Endermite", "EntityHorse",
         "EyeOfEnderSignal", "FallingSand", "Fireball",
         "FireworksRocketEntity", "Ghast", "Giant", "Guardian", "Item", "ItemFrame",
-        "LavaSlime", "LeashKnot", "MinecartChest", "MinecartCommandBlock",
+        "LavaSlime", "LeashKnot", "Lightning", "MinecartChest", "MinecartCommandBlock",
         "MinecartFurnace", "MinecartHopper", "MinecartRideable",
         "MinecartSpawner", "MinecartTNT", "Mob", "Monster", "MushroomCow",
         "Ozelot", "Painting", "Pig", "PigZombie", "PrimedTnt", "Rabbit", "Sheep",
