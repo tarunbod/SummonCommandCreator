@@ -59,7 +59,7 @@ public class FXMLDocumentController implements Initializable {
         "EnderDragon", "Enderman", "Endermite", "EntityHorse",
         "EyeOfEnderSignal", "FallingSand", "Fireball",
         "FireworksRocketEntity", "Ghast", "Giant", "Guardian", "Item", "ItemFrame",
-        "LavaSlime", "LeashKnot", "Lightning", "MinecartChest", "MinecartCommandBlock",
+        "LavaSlime", "LeashKnot", "LightningBolt", "MinecartChest", "MinecartCommandBlock",
         "MinecartFurnace", "MinecartHopper", "MinecartRideable",
         "MinecartSpawner", "MinecartTNT", "Mob", "Monster", "MushroomCow",
         "Ozelot", "Painting", "Pig", "PigZombie", "PrimedTnt", "Rabbit", "Sheep",
@@ -240,7 +240,7 @@ public class FXMLDocumentController implements Initializable {
     public void initialize(URL arg0, ResourceBundle arg1) {
         versionText.setText("Summon Command Creator " + SummonCommandCreator.VERSION + " by FirstWorldAnarchy.");
         container.setCursor(Cursor.DISAPPEAR);
-        
+
         entitySelect.getItems().addAll(Arrays.asList(entityOptions));
         entitySelect.getSelectionModel().select(0);
         for (int i = 1; i <= 23; i++) {
@@ -367,14 +367,13 @@ public class FXMLDocumentController implements Initializable {
             sb.append("}");
             return sb.toString();
         }
-        return null;
+        return "";
     }
 
     public void showCommand() {
-        if (createCommand() == null) {
+        if (createCommand().equalsIgnoreCase("")) {
             Timeline t = new Timeline(new KeyFrame(Duration.ZERO, new KeyValue(commandTextArea.promptTextProperty(), "You didn't select anything to summon!")), new KeyFrame(Duration.millis(3000), new KeyValue(commandTextArea.promptTextProperty(), "Click on \"Create Command\" or the command block!")));
             t.play();
-            
         } else {
             commandTextArea.setText(createCommand());
         }
@@ -407,22 +406,22 @@ public class FXMLDocumentController implements Initializable {
             att.append("],");
             return att.toString();
         }
-        return null;
+        return "";
     }
 
     public String getEquipmentText() {
         if (equipmentCheck.isSelected()) {
             StringBuilder equip = new StringBuilder();
             equip.append("Equipment:[");
-            equip.append("{id:").append(handText.getText()).append("},");
-            equip.append("{id:").append(feetText.getText()).append("},");
-            equip.append("{id:").append(legsText.getText()).append("},");
-            equip.append("{id:").append(bodyText.getText()).append("},");
-            equip.append("{id:").append(headText.getText()).append("},");
+            equip.append("0:{id:").append(handText.getText()).append("},");
+            equip.append("1:{id:").append(feetText.getText()).append("},");
+            equip.append("2:{id:").append(legsText.getText()).append("},");
+            equip.append("3:{id:").append(bodyText.getText()).append("},");
+            equip.append("4:{id:").append(headText.getText()).append("},");
             equip.append("],");
             return equip.toString();
         }
-        return null;
+        return "";
     }
 
     public String getDropChancesText() {
@@ -437,7 +436,7 @@ public class FXMLDocumentController implements Initializable {
             drop.append("],");
             return drop.toString();
         }
-        return null;
+        return "";
     }
 
     public String getPotionEffectsText() {
@@ -453,22 +452,16 @@ public class FXMLDocumentController implements Initializable {
             potion.append("],");
             return potion.toString();
         }
-        return null;
+        return "";
     }
 
     public String getMotionText() {
         StringBuilder motion = new StringBuilder();
         StringBuilder direction = new StringBuilder();
         motion.append("Motion:[");
-        if (!motionTextX.getText().equalsIgnoreCase("0.0")) {
-            motion.append(motionTextX.getText()).append(",");
-        }
-        if (!motionTextY.getText().equalsIgnoreCase("0.0")) {
-            motion.append(motionTextY.getText()).append(",");
-        }
-        if (!motionTextZ.getText().equalsIgnoreCase("0.0")) {
-            motion.append(motionTextZ.getText());
-        }
+        motion.append(motionTextX.getText()).append(",");
+        motion.append(motionTextY.getText()).append(",");
+        motion.append(motionTextZ.getText());
         motion.append("],");
 
         direction.append("direction:[");
@@ -478,12 +471,12 @@ public class FXMLDocumentController implements Initializable {
         direction.append("],");
 
         if (!motion.toString().equalsIgnoreCase("Motion:[],")) {
-            return motion.toString() + direction.toString();
+            return motion.toString() + (direction.toString().equalsIgnoreCase("direction:[],") ? "" : direction.toString());
         } else {
             if (entitySelect.getSelectionModel().getSelectedItem().equalsIgnoreCase("witherskull")) {
                 return direction.toString();
             } else {
-                return null;
+                return "";
             }
         }
     }

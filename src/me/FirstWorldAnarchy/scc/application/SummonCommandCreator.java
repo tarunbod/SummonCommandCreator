@@ -13,7 +13,7 @@ import javafx.stage.Stage;
  */
 public class SummonCommandCreator extends Application {
 
-    public static final String VERSION = "V2.4";
+    public static final String VERSION = "V2.5";
     
     @Override
     public void start(Stage stage) throws Exception {
